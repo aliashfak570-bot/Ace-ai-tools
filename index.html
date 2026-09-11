@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ace AI Tools</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f6f7fb;
+      color: #151515;
+    }
+
+    header {
+      background: white;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #6c4cff;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 55px;
+      background: linear-gradient(135deg, #eee9ff, #ffffff);
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 8vw, 72px);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: #6c4cff;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #666;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .search {
+      margin: 30px auto 0;
+      max-width: 600px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 17px 20px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .tools {
+      padding: 55px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #777;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 22px;
+      border: 1px solid #eee;
+      transition: 0.25s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #777;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 11px 18px;
+      background: #6c4cff;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 30px;
+      background: #151515;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer p {
+      color: #bbb;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Ace <span>AI Tools</span></div>
+
+    <nav>
+      <a href="#tools">Tools</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Build with <span>AI.</span></h1>
+
+    <p>
+      Powerful AI tools for images, videos, voice, logos, PDFs and more —
+      all in one place.
+    </p>
+
+    <div class="search">
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="Search AI tools..."
+        onkeyup="searchTools()"
+      >
+    </div>
+  </section>
+
+  <section class="tools" id="tools">
+
+    <div class="section-title">
+      <h2>AI Tools</h2>
+      <p>Choose a tool and start creating.</p>
+    </div>
+
+    <div class="grid" id="toolGrid">
+
+      <div class="card" data-name="image photo ai image">
+        <div class="icon">🎨</div>
+        <h3>AI Image</h3>
+        <p>Create amazing images using artificial intelligence.</p>
+        <a class="btn" href="#">Try Now</a>
+      </div>
+
+      <div class="card" data-name="logo maker logo design">
+        <div class="icon">🪄</div>
+        <h3>AI Logo Maker</h3>
+        <p>Create, improve and redesign professional logos.</p>
+        <a class="btn" href="#">Create Logo</a>
+      </div>
+
+      <div class="card" data-name="video ai video generator">
+        <div class="icon">🎬</div>
+        <h3>AI Video</h3>
+        <p>Turn your ideas and images into amazing AI videos.</p>
+        <a class="btn" href="#">Create Video</a>
+      </div>
+
+      <div class="card" data-name="voice speech ai voice">
+        <div class="icon">🎙️</div>
+        <h3>AI Voice</h3>
+        <p>Generate natural AI voiceovers from your text.</p>
+        <a class="btn" href="#">Generate Voice</a>
+      </div>
+
+      <div class="card" data-name="pdf document pdf tools">
+        <div class="icon">📄</div>
+        <h3>PDF Tools</h3>
+        <p>Convert, compress, summarize and work with PDF files.</p>
+        <a class="btn" href="#">Open PDF Tools</a>
+      </div>
+
+      <div class="card" data-name="writing writer essay">
+        <div class="icon">✍️</div>
+        <h3>AI Writing</h3>
+        <p>Write essays, emails, posts and other content with AI.</p>
+        <a class="btn" href="#">Start Writing</a>
+      </div>
+
+      <div class="card" data-name="background remover photo">
+        <div class="icon">🖼️</div>
+        <h3>Background Remover</h3>
+        <p>Remove image backgrounds quickly and easily.</p>
+        <a class="btn" href="#">Remove Background</a>
+      </div>
+
+      <div class="card" data-name="image enhancer photo enhance">
+        <div class="icon">✨</div>
+        <h3>Image Enhancer</h3>
+        <p>Improve the quality and clarity of your photos.</p>
+        <a class="btn" href="#">Enhance Photo</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="about">
+    <h2>ACE AI TOOLS</h2>
+    <p>Your all-in-one AI creation platform.</p>
+    <p>© 2026 Ace AI Tools</p>
+  </footer>
+
+  <script>
+    function searchTools() {
+      const search = document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach(card => {
+        const name = card.dataset.name;
+
+        if (name.includes(search)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
