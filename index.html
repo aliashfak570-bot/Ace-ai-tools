@@ -267,26 +267,66 @@
     <p>© 2026 Ace AI Tools</p>
   </footer>
 
-  <script>
-    function searchTools() {
-      const search = document
-        .getElementById("searchBox")
-        .value
-        .toLowerCase();
+  <script><script>
+function searchTools() {
+  const search = document
+    .getElementById("searchBox")
+    .value
+    .toLowerCase();
 
-      const cards = document.querySelectorAll(".card");
+  const cards = document.querySelectorAll(".card");
 
-      cards.forEach(card => {
-        const name = card.dataset.name;
+  cards.forEach(card => {
+    const name = card.dataset.name;
 
-        if (name.includes(search)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
+    if (name.includes(search)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
     }
-  </script>
+  });
+}
 
-</body>
-</html>
+document.addEventListener("click", async function (e) {
+  const button = e.target.closest(".card[data-name*='writing'] .btn");
+
+  if (!button) return;
+
+  e.preventDefault();
+
+  const prompt = window.prompt(
+    "✍️ AI Writing\n\nKya likhna hai? Example: Write a 500-word essay about AI."
+  );
+
+  if (!prompt) return;
+
+  button.textContent = "Writing...";
+
+  try {
+    const response = await fetch("/api/write", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ prompt })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Something went wrong");
+    }
+
+    const text =
+      data.response ||
+      data.choices?.[0]?.message?.content ||
+      JSON.stringify(data);
+
+    alert("🤖 AI Response:\n\n" + text);
+  } catch (error) {
+    alert("❌ Error: " + error.message);
+  }
+
+  button.textContent = "Start Writing";
+});
+                      </script>
